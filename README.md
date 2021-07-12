@@ -1,3 +1,3 @@
-# Run the graphics Programs in C or C++ through browser
+# Run the graphics Programs of C or C++ through browser
 
 
