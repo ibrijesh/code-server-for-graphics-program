@@ -81,6 +81,8 @@ ENV HOME=/root \
     DISPLAY_HEIGHT=660 \
     RUN_XTERM=yes 
 
+    
+
 COPY . /app
 WORKDIR /app/programs
 RUN rm -f /etc/nginx/sites-enabled/default
