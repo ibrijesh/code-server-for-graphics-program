@@ -70,6 +70,8 @@ RUN make
 RUN make install
 RUN cp /usr/local/lib/libgraph.* /usr/lib   
 
+RUN apt install vim -y
+
 # Setup demo environment variables
 ENV HOME=/root \
     DEBIAN_FRONTEND=noninteractive \
@@ -86,10 +88,11 @@ ENV HOME=/root \
 COPY . /app
 WORKDIR /app/programs
 RUN rm -f /etc/nginx/sites-enabled/default
-COPY nginx/default /etc/nginx/sites-enabled/default
+COPY nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
 RUN chmod +x /app/conf.d/websockify.sh
 RUN chmod +x /app/conf.d/nginx-conf.sh
 RUN chmod +x /app/entrypoint.sh
+
 
 
 
