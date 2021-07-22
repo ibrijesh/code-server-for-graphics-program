@@ -11,7 +11,7 @@ server {
           proxy_set_header Connection "upgrade";
 
           # VNC connection timeout
-          proxy_read_timeout 1000s;
+          proxy_read_timeout 86400;
 
           # Disable cache
           proxy_buffering off;
@@ -19,15 +19,19 @@ server {
 
 
     location / {
-            index vnc_auto.html;
-            alias /usr/share/novnc/;
-            try_files $uri $uri/ /vnc_auto.html;
+
+          proxy_http_version 1.1;
+          proxy_pass http://127.0.0.1:6080/vnc_auto.html; 
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+
+          # VNC connection timeout
+          proxy_read_timeout 86400;
+
+          # Disable cache
+          proxy_buffering off;
+
     }
 
-    location /vncws {
-            index vnc.html;
-            alias /usr/share/novnc/;
-            try_files $uri $uri/ /vnc.html;
-    }
 
 }

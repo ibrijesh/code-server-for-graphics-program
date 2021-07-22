@@ -3,3 +3,5 @@ build:
     web: Dockerfile
 
 
+
+sudo certbot  --agree-tos --redirect --hsts --staple-ocsp --email brijeshyadavjthj2@gmail.com -d weather.ibrijesh.tech
